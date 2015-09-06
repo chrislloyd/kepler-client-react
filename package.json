@@ -1,0 +1,28 @@
+{
+  "name": "kepler-client",
+  "version": "0.0.0",
+  "description": "A simple kepler client",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cole Krumbholz",
+  "license": "MIT",
+  "dependencies": {
+    "react": "~0.13.3",
+    "ws": "~0.8.0",
+    "immutable": "~3.7.5"
+  },
+  "devDependencies": {
+    "webpack": "~1.11.0",
+    "babel-core": "~5.8.21",
+    "babel-loader": "~5.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/colevscode/kepler-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/colevscode/kepler-client/issues"
+  }
+}
