@@ -2,7 +2,7 @@
   "name": "kepler-client",
   "version": "0.0.0",
   "description": "A simple kepler client made with SVG and React",
-  "main": "lib/index.js",
+  "main": "lib/KeplerClient.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "babel -d lib/ src/",

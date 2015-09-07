@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry: ["./src/index.js"],
+  entry: ["./src/KeplerClient.js"],
   output: {
     path: './build', // This is where images AND js will go
     filename: 'keplerclient.js'
