@@ -1,5 +1,4 @@
 const WebSocket = require('ws');
-const Immutable = require('Immutable');
 
 let Display = null;
 
@@ -14,15 +13,18 @@ class KeplerClient {
 
     if (typeof elementOrDrawFn === 'function') {
       this._drawFn = drawFn;
-    } else {
+    } else if (elementOrDrawFn) {
       this._drawFn = (state) => {
         Display = Display || require('./Display');
         Display.draw(state, elementOrDrawFn);
       }
+    } else {
+      this._drawFn = () => {};
     }
   }
 
   doUpdate(state) {
+    // Subclasses should override this.
   }
 
   // commands ---------------------
@@ -34,7 +36,7 @@ class KeplerClient {
   // internals --------------------
 
   _handleMessage(ev) {
-    let state = Immutable.fromJS(JSON.parse(ev.data));
+    let state = JSON.parse(ev.data);
     this._drawFn(state);
     this.doUpdate(state);
     this.state = state;
@@ -46,6 +48,7 @@ class KeplerClient {
 
 }
 
+
 // constants --------------------
 
 KeplerClient.prototype.DIRS = ['←', '↓', '↑', '→'];
@@ -53,6 +56,9 @@ KeplerClient.prototype.UP = '↑';
 KeplerClient.prototype.DOWN = '↓';
 KeplerClient.prototype.LEFT = '←';
 KeplerClient.prototype.RIGHT = '→';
+
+
+// exports ----------------------
 
 module.exports = KeplerClient;
 window.KeplerClient = KeplerClient;

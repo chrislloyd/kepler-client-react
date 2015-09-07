@@ -3,7 +3,7 @@ const MapView = require('./MapView');
 const HUD = require('./HUD');
 
 function draw(state, element) {
-  let {me, sensors} = state.toJS();
+  let {me, sensors} = state;
   let view = (
     <div>
       <MapView
