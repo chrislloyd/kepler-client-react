@@ -1,21 +1,19 @@
 const WebSocket = require('ws');
-
-let Display = null;
+const Display = require('./Display');
 
 class KeplerClient {
 
   // overridable ------------------ 
 
   constructor(host, elementOrDrawFn) {
-    this._ws = new WebSocket(host);
+    this._ws = typeof host === 'string' ? new WebSocket(host) : host;
     this._ws.addEventListener('message', this._handleMessage.bind(this));
     this._actions = [];
 
     if (typeof elementOrDrawFn === 'function') {
-      this._drawFn = drawFn;
+      this._drawFn = elementOrDrawFn;
     } else if (elementOrDrawFn) {
       this._drawFn = (state) => {
-        Display = Display || require('./Display');
         Display.draw(state, elementOrDrawFn);
       }
     } else {
@@ -59,6 +57,10 @@ KeplerClient.prototype.RIGHT = '→';
 
 
 // exports ----------------------
+
+
+KeplerClient.MapView = Display.MapView;
+KeplerClient.HUD = Display.HUD;
 
 module.exports = KeplerClient;
 window.KeplerClient = KeplerClient;

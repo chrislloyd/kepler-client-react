@@ -19,4 +19,4 @@ function draw(state, element) {
   React.render(view, element);
 }
 
-module.exports = {draw};
+module.exports = {draw, MapView, HUD};
