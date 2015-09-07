@@ -9,10 +9,10 @@ function sample(col) {
 class RandomBot extends KeplerClient {
 
   doUpdate(state) {
-    let dir = sample(KeplerClient.DIRS);
+    let dir = sample(this.DIRS);
     this.move(dir);
   }
-}
+} 
 
 let el = document.getElementById('content');
 new RandomBot('ws://localhost:5000', el);

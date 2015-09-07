@@ -17,7 +17,7 @@ const Entity = React.createClass({
     return (
       <rect
         x={pos.x}
-        y={pos.y}
+        y={-pos.y}  // Must invert y axis
         fillOpacity={opacity}
         width="1"
         height="1"

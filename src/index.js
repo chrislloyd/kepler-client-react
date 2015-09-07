@@ -5,12 +5,6 @@ let Display = null;
 
 class KeplerClient {
 
-  // constants --------------------
-
-  static get DIRS() {
-    return ['←', '↓', '↑', '→'];
-  }
-
   // overridable ------------------ 
 
   constructor(host, elementOrDrawFn) {
@@ -51,6 +45,14 @@ class KeplerClient {
   }
 
 }
+
+// constants --------------------
+
+KeplerClient.prototype.DIRS = ['←', '↓', '↑', '→'];
+KeplerClient.prototype.UP = '↑';
+KeplerClient.prototype.DOWN = '↓';
+KeplerClient.prototype.LEFT = '←';
+KeplerClient.prototype.RIGHT = '→';
 
 module.exports = KeplerClient;
 window.KeplerClient = KeplerClient;

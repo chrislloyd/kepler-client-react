@@ -63,18 +63,8 @@
 	var Display = null;
 	
 	var KeplerClient = (function () {
-	  _createClass(KeplerClient, null, [{
-	    key: 'DIRS',
 	
-	    // constants --------------------
-	
-	    get: function get() {
-	      return ['←', '↓', '↑', '→'];
-	    }
-	
-	    // overridable ------------------
-	
-	  }]);
+	  // overridable ------------------
 	
 	  function KeplerClient(host, elementOrDrawFn) {
 	    _classCallCheck(this, KeplerClient);
@@ -92,6 +82,8 @@
 	      };
 	    }
 	  }
+	
+	  // constants --------------------
 	
 	  _createClass(KeplerClient, [{
 	    key: 'doUpdate',
@@ -125,6 +117,12 @@
 	
 	  return KeplerClient;
 	})();
+	
+	KeplerClient.prototype.DIRS = ['←', '↓', '↑', '→'];
+	KeplerClient.prototype.UP = '↑';
+	KeplerClient.prototype.DOWN = '↓';
+	KeplerClient.prototype.LEFT = '←';
+	KeplerClient.prototype.RIGHT = '→';
 	
 	module.exports = KeplerClient;
 	window.KeplerClient = KeplerClient;
@@ -27793,7 +27791,7 @@
 	
 	    return React.createElement("rect", {
 	      x: pos.x,
-	      y: pos.y,
+	      y: -pos.y, // Must invert y axis
 	      fillOpacity: opacity,
 	      width: "1",
 	      height: "1"
