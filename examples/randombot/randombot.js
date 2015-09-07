@@ -1,5 +1,3 @@
-const KeplerClient = require('./KeplerClient');
-
 function rand(lim) {
   return Math.floor(Math.random(lim) * lim)
 }
@@ -16,4 +14,5 @@ class RandomBot extends KeplerClient {
   }
 }
 
-module.exports = RandomBot;
+let el = document.getElementById('content');
+new RandomBot('ws://localhost:5000', el);

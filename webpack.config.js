@@ -1,17 +1,17 @@
 var path = require('path');
 
 module.exports = {
-  entry: ["./js/main.js"],
+  entry: ["./src/index.js"],
   output: {
     path: './build', // This is where images AND js will go
-    filename: 'bundle.js'
+    filename: 'keplerclient.js'
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [path.resolve(__dirname, "js")]
+        include: [path.resolve(__dirname, "src")]
       },
     ]
   },

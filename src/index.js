@@ -1,5 +1,7 @@
 const WebSocket = require('ws');
-const Immutable = require('immutable');
+const Immutable = require('Immutable');
+
+let Display = null;
 
 class KeplerClient {
 
@@ -11,11 +13,19 @@ class KeplerClient {
 
   // overridable ------------------ 
 
-  constructor(host, drawFn) {
+  constructor(host, elementOrDrawFn) {
     this._ws = new WebSocket(host);
     this._ws.addEventListener('message', this._handleMessage.bind(this));
     this._actions = [];
-    this._drawFn = drawFn || ()=>{};
+
+    if (typeof elementOrDrawFn === 'function') {
+      this._drawFn = drawFn;
+    } else {
+      this._drawFn = (state) => {
+        Display = Display || require('./Display');
+        Display.draw(state, elementOrDrawFn);
+      }
+    }
   }
 
   doUpdate(state) {
@@ -43,5 +53,4 @@ class KeplerClient {
 }
 
 module.exports = KeplerClient;
-
-
+window.KeplerClient = KeplerClient;
